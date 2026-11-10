@@ -705,6 +705,88 @@ body.theme-light .app-nav-item.active {
   height: 16px;
 }
 
+/* Selector de Motor de IA (Chat Header) */
+.engine-selector-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  height: 34px;
+  transition: all 0.2s ease;
+}
+
+.engine-selector-group:hover,
+.engine-selector-group:focus-within {
+  border-color: #8764B8;
+  box-shadow: 0 0 0 1px #8764B8;
+}
+
+.engine-selector-group .engine-icon {
+  font-size: 14px;
+  user-select: none;
+}
+
+.teams-engine-select {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  padding-right: 4px;
+}
+
+.teams-engine-select option {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+/* Selector de Idioma (Chat Header) */
+.lang-selector-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  height: 34px;
+  transition: all 0.2s ease;
+}
+
+.lang-selector-group:hover,
+.lang-selector-group:focus-within {
+  border-color: var(--teams-purple);
+  box-shadow: 0 0 0 1px var(--teams-purple);
+}
+
+.lang-selector-group .lang-icon {
+  font-size: 14px;
+  user-select: none;
+}
+
+.teams-lang-select {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  padding-right: 4px;
+}
+
+.teams-lang-select option {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
 /* Messages Scroller */
 .chat-messages-container {
   flex: 1;
@@ -852,6 +934,13 @@ body.theme-light .teams-message.outgoing .message-bubble {
   color: var(--text-muted);
 }
 
+.card-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .card-duration-badge {
   display: inline-flex;
   align-items: center;
@@ -862,6 +951,35 @@ body.theme-light .teams-message.outgoing .message-bubble {
   background-color: rgba(91, 95, 199, 0.15);
   color: var(--teams-purple);
   font-weight: 600;
+}
+
+.card-lang-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background-color: rgba(16, 124, 65, 0.15);
+  color: #107C41;
+  font-weight: 600;
+  border: 1px solid rgba(16, 124, 65, 0.3);
+}
+
+.card-engine-badge {
+  display: none !important;
+}
+
+.theme-dark .card-engine-badge {
+  color: #CBB9FA;
+  background-color: rgba(135, 100, 184, 0.25);
+  border-color: rgba(135, 100, 184, 0.5);
+}
+
+.theme-dark .card-lang-badge {
+  color: #57d38c;
+  background-color: rgba(16, 124, 65, 0.25);
+  border-color: rgba(16, 124, 65, 0.45);
 }
 
 /* Audio Player in Card */
@@ -1178,6 +1296,91 @@ body.theme-light .teams-message.outgoing .message-bubble {
   border: 1px solid rgba(91, 95, 199, 0.5);
 }
 
+.meeting-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Selector de Motor en Barra de Reunión */
+.meeting-engine-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(135, 100, 184, 0.5);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  height: 32px;
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+}
+
+.meeting-engine-group:hover,
+.meeting-engine-group:focus-within {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: #8764B8;
+}
+
+.teams-meeting-engine-select {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  padding-right: 4px;
+}
+
+.teams-meeting-engine-select option {
+  background-color: #202020;
+  color: #FFFFFF;
+}
+
+/* Selector de Idioma en Barra de Reunión */
+.meeting-lang-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  height: 32px;
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+}
+
+.meeting-lang-group:hover,
+.meeting-lang-group:focus-within {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(91, 95, 199, 0.7);
+}
+
+.meeting-lang-group .lang-icon {
+  font-size: 13px;
+  user-select: none;
+}
+
+.teams-meeting-lang-select {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  padding-right: 4px;
+}
+
+.teams-meeting-lang-select option {
+  background-color: #202020;
+  color: #FFFFFF;
+}
+
 .meeting-top-btn {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1302,78 +1505,198 @@ body.theme-light .teams-message.outgoing .message-bubble {
 .audio-level-indicator .b2 { height: 12px; animation-delay: 0.25s; }
 .audio-level-indicator .b3 { height: 8px; animation-delay: 0.4s; }
 
-/* Bot User Tile */
-.bot-user-tile {
-  background: radial-gradient(circle at center, #25283D, #181922);
+/* Remote User Tile */
+.remote-user-tile {
+  background-color: #1F1F1F;
 }
 
-.bot-avatar-display {
+/* Vision Face Tracking Overlay */
+.vision-face-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform: scaleX(-1);
+  z-index: 10;
+}
+
+/* Vision Speaker Coach Pill in Local Video Tile */
+.vision-coach-pill {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 5px 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #FFFFFF;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.vision-coach-pill.hidden {
+  display: none !important;
+}
+
+.vision-coach-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--teams-green-bright);
+  box-shadow: 0 0 6px rgba(48, 209, 88, 0.6);
+}
+
+.vision-coach-dot.inactive {
+  background-color: #8F8F8F;
+  box-shadow: none;
+}
+
+/* Post-Meeting Card Video Insights Section */
+.card-vision-section {
+  margin-top: 14px;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--border-subtle);
+}
+
+.vision-section-header {
+  display: flex;
   align-items: center;
-  gap: 12px;
-  position: relative;
+  justify-content: space-between;
+}
+
+.vision-section-header h5 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vision-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.vision-metric-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.vision-metric-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.vision-metric-val {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.vision-distribution-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.vision-distribution-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.vision-segmented-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.08);
   width: 100%;
 }
 
-.bot-pulse-ring {
-  position: absolute;
-  top: 15px;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 2px solid var(--teams-purple);
-  opacity: 0.6;
-  animation: pulseBot 2s infinite ease-out;
+.vision-segment {
+  height: 100%;
+  transition: width 0.3s;
 }
 
-.bot-avatar-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: #2F3359;
+.vision-segment.seg-feliz { background-color: #30D158; }
+.vision-segment.seg-neutral { background-color: #5B5FC7; }
+.vision-segment.seg-sorpresa { background-color: #FF9F0A; }
+.vision-segment.seg-tension { background-color: #FF453A; }
+.vision-segment.seg-otros { background-color: #8E8E93; }
+
+.vision-legend-row {
   display: flex;
   align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.vision-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.vision-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.remote-avatar {
+  background: linear-gradient(135deg, #1F5782, #2B88D8) !important;
+  color: #FFFFFF !important;
+}
+
+.tile-mic-muted {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  border: 2px solid #5B5FC7;
-}
-
-.bot-avatar-icon svg {
-  width: 44px;
-  height: 44px;
-}
-
-.bot-avatar-display h4 {
-  font-size: 16px;
-  color: #FFFFFF;
-}
-
-.bot-status-text {
-  font-size: 12px;
-  color: #A1A5D8;
-  text-align: center;
-}
-
-#audio-waveform-canvas {
-  width: 280px;
-  height: 60px;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #E1DFDD;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 3px;
+  border-radius: 50%;
 }
 
 /* Live Floating Captions */
 .live-captions-container {
-  margin: 0 auto 12px auto;
-  width: 80%;
-  max-width: 800px;
-  background: rgba(18, 18, 18, 0.88);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-lg);
-  padding: 12px 18px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  margin: 0 auto 16px auto;
+  width: auto;
+  max-width: 720px;
+  min-width: 280px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   transition: opacity 0.3s;
+  text-align: center;
 }
 
 .live-captions-container.hidden {
@@ -1381,31 +1704,12 @@ body.theme-light .teams-message.outgoing .message-bubble {
   pointer-events: none;
 }
 
-.caption-header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 4px;
-}
-
-.caption-pulse {
-  width: 6px;
-  height: 6px;
-  background-color: var(--teams-green-bright);
-  border-radius: 50%;
-}
-
-.caption-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: #9EA2FF;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
 .caption-text {
   font-size: 14px;
   color: #FFFFFF;
+  line-height: 1.4;
+  font-weight: 400;
+}
   line-height: 1.4;
   min-height: 22px;
 }
@@ -1595,12 +1899,6 @@ body.theme-light .teams-message.outgoing .message-bubble {
   0% { transform: scale(0.95); opacity: 0.8; }
   50% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(0.95); opacity: 0.8; }
-}
-
-@keyframes pulseBot {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  50% { transform: scale(1.35); opacity: 0.1; }
-  100% { transform: scale(0.9); opacity: 0; }
 }
 
 @keyframes audioBounce {

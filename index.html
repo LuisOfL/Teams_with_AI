@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Microsoft Teams - Clona & Transcripción en Vivo</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Microsoft Teams</title>
+  <link rel="stylesheet" href="styles.css?v=4.1">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235B5FC7'><path d='M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-1.5V7a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v11a3 3 0 0 0 3 3h13.5z'/></svg>">
 </head>
 <body class="theme-dark">
@@ -29,7 +29,6 @@
             <text x="11.5" y="21" font-family="Segoe UI, sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF">T</text>
           </svg>
           <span class="teams-title">Microsoft Teams</span>
-          <span class="teams-badge-tag">AI Transcription</span>
         </div>
       </div>
 
@@ -152,33 +151,58 @@
         <!-- Conversation Header -->
         <header class="chat-header">
           <div class="chat-header-info">
-            <div class="chat-header-avatar" id="active-chat-avatar">NLP</div>
+            <div class="chat-header-avatar" id="active-chat-avatar">IS</div>
             <div class="chat-header-details">
               <div class="chat-header-title-wrap">
-                <h3 id="active-chat-title">Proyecto NLP - Reunión y Transcripción</h3>
+                <h3 id="active-chat-title">Ingeniería de Software - General</h3>
                 <span class="active-badge">Activo</span>
               </div>
-              <p class="chat-header-subtitle" id="active-chat-subtitle">Canal del equipo • 4 miembros</p>
+              <p class="chat-header-subtitle" id="active-chat-subtitle">Canal general • 5 miembros</p>
             </div>
           </div>
 
           <div class="chat-header-nav-tabs">
             <button class="chat-tab-btn active">Publicaciones</button>
             <button class="chat-tab-btn">Archivos</button>
-            <button class="chat-tab-btn">Actas & Transcripciones</button>
+            <button class="chat-tab-btn">Notas</button>
             <button class="chat-tab-btn">+</button>
           </div>
 
           <!-- Meeting / Call Launch Action Buttons -->
           <div class="chat-header-actions">
-            <button class="teams-meet-button" id="btn-start-call" title="Iniciar llamada y transcribir automáticamente">
+            <!-- Hidden engine selector to preserve functionality if needed -->
+            <select id="chat-engine-select" style="display: none;">
+              <option value="cpp" selected>Motor C++</option>
+              <option value="neural">Motor Neuronal</option>
+              <option value="webspeech">Web Speech</option>
+            </select>
+
+            <!-- Selector de Idioma de Transcripción -->
+            <div class="lang-selector-group" title="Seleccionar idioma de subtítulos">
+              <span class="lang-icon" aria-hidden="true">🌐</span>
+              <select id="chat-lang-select" class="teams-lang-select" aria-label="Idioma de subtítulos">
+                <option value="es-ES">Español (España)</option>
+                <option value="es-MX">Español (México)</option>
+                <option value="en-US">English (US)</option>
+                <option value="en-GB">English (UK)</option>
+                <option value="fr-FR">Français</option>
+                <option value="pt-BR">Português</option>
+                <option value="de-DE">Deutsch</option>
+                <option value="it-IT">Italiano</option>
+                <option value="ja-JP">日本語</option>
+                <option value="zh-CN">中文</option>
+                <option value="auto">Automático</option>
+              </select>
+            </div>
+
+            <button class="teams-meet-button" id="btn-start-call" title="Iniciar reunión">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
               </svg>
               <span>Reunirse</span>
             </button>
             
-            <button class="teams-audio-call-button" id="btn-start-audio-only" title="Llamada sólo de audio">
+            <button class="teams-audio-call-button" id="btn-start-audio-only" title="Llamada de audio">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
               </svg>
@@ -199,7 +223,7 @@
             <button class="tool-btn" title="Emoji">😊</button>
             <button class="tool-btn" title="Giphy">GIF</button>
             <button class="tool-btn" title="Adhesivo">🎨</button>
-            <button class="tool-btn" id="btn-quick-call-input" title="Llamar y transcribir">🎥 Iniciar Reunión</button>
+            <button class="tool-btn" id="btn-quick-call-input" title="Reunirse ahora">🎥 Reunirse</button>
           </div>
           
           <div class="chat-input-box">
@@ -225,18 +249,43 @@
       <header class="meeting-header">
         <div class="meeting-header-title">
           <span class="recording-indicator" id="meeting-recording-dot"></span>
-          <span class="meeting-title-text" id="meeting-name">Reunión de Proyecto NLP</span>
+          <span class="meeting-title-text" id="meeting-name">Reunión de seguimiento</span>
           <span class="meeting-timer" id="meeting-timer">00:00</span>
-          <span class="speech-status-pill" id="speech-recognition-status">🎙️ Escuchando audio...</span>
+          <span class="speech-status-pill" id="speech-recognition-status">🎙️ Audio y video activos</span>
         </div>
 
         <div class="meeting-header-actions">
+          <!-- Hidden engine selector to preserve JS references -->
+          <select id="meeting-engine-select" style="display: none;">
+            <option value="cpp" selected>Motor C++</option>
+            <option value="neural">Motor Neuronal</option>
+            <option value="webspeech">Web Speech</option>
+          </select>
+
+          <!-- Selector de Idioma en Vivo durante la Reunión -->
+          <div class="meeting-lang-group" title="Idioma de subtítulos">
+            <span class="lang-icon" aria-hidden="true">🌐</span>
+            <select id="meeting-lang-select" class="teams-meeting-lang-select" aria-label="Idioma de subtítulos en vivo">
+              <option value="es-ES">Español (España)</option>
+              <option value="es-MX">Español (México)</option>
+              <option value="en-US">English (US)</option>
+              <option value="en-GB">English (UK)</option>
+              <option value="fr-FR">Français</option>
+              <option value="pt-BR">Português</option>
+              <option value="de-DE">Deutsch</option>
+              <option value="it-IT">Italiano</option>
+              <option value="ja-JP">日本語</option>
+              <option value="zh-CN">中文</option>
+              <option value="auto">Automático</option>
+            </select>
+          </div>
+
           <button class="meeting-top-btn" id="btn-toggle-captions" title="Subtítulos en tiempo real">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="2" y="4" width="20" height="16" rx="2"></rect>
               <path d="M7 15h3M14 15h3M7 11h10"></path>
             </svg>
-            <span>Subtítulos en directo</span>
+            <span>Subtítulos</span>
           </button>
         </div>
       </header>
@@ -247,13 +296,21 @@
         <!-- Local User Tile -->
         <div class="video-tile local-user-tile" id="local-tile">
           <video id="local-video" autoplay playsinline muted></video>
+          <canvas id="vision-face-canvas" class="vision-face-overlay"></canvas>
+
+          <!-- Live Real-Time Video Analysis Coach Pill -->
+          <div class="vision-coach-pill" id="vision-coach-pill" title="Análisis de video en tiempo real">
+            <span class="vision-coach-dot inactive" id="vision-coach-dot"></span>
+            <span id="vision-coach-text">Iniciando análisis...</span>
+          </div>
+
           <div class="avatar-placeholder" id="local-avatar-placeholder">
             <div class="avatar-large">LU</div>
-            <p class="user-display-name">Tú (Organizador)</p>
+            <p class="user-display-name">Tú</p>
           </div>
           
           <div class="tile-user-info">
-            <span class="tile-name">Tú (Hablando)</span>
+            <span class="tile-name">Tú</span>
             <div class="audio-level-indicator" id="audio-level-bar">
               <span class="bar b1"></span>
               <span class="bar b2"></span>
@@ -262,36 +319,31 @@
           </div>
         </div>
 
-        <!-- AI Assistant / Meeting Transcriber Tile -->
-        <div class="video-tile bot-user-tile">
-          <div class="bot-avatar-display">
-            <div class="bot-pulse-ring"></div>
-            <div class="bot-avatar-icon">
-              <svg viewBox="0 0 24 24" fill="#5B5FC7">
-                <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5a2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5z"/>
-              </svg>
-            </div>
-            <h4>Copilot Transcriptor</h4>
-            <p class="bot-status-text">Extrayendo audio y transcribiendo en tiempo real...</p>
-            
-            <!-- Real-time Audio Waveform Canvas (Built from Scratch with Web Audio API) -->
-            <canvas id="audio-waveform-canvas" width="300" height="70"></canvas>
+        <!-- Remote Participant Tile: Carlos Ruiz -->
+        <div class="video-tile remote-user-tile" id="remote-tile">
+          <div class="avatar-placeholder">
+            <div class="avatar-large remote-avatar">CR</div>
+            <p class="user-display-name">Carlos Ruiz</p>
           </div>
+
           <div class="tile-user-info">
-            <span class="tile-name">Copilot Transcripción</span>
-            <span class="tile-badge">Sistema</span>
+            <span class="tile-name">Carlos Ruiz</span>
+            <span class="tile-mic-muted" title="Micrófono silenciado">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l4.07 4.07c-1.38.72-2.99 1.14-4.72 1.14-3.02-.43-5.42-2.78-5.91-5.78-.1-.6-.39-1.14-1-1.14-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c1.95-.28 3.65-1.28 4.8-2.67l2.88 2.88 1.27-1.27L4.27 3z"/>
+              </svg>
+            </span>
           </div>
+
+          <!-- Hidden canvas kept in DOM for audio frequency calculations without robotic visuals -->
+          <canvas id="audio-waveform-canvas" width="300" height="70" style="display: none;"></canvas>
         </div>
 
       </div>
 
       <!-- Live Floating Captions on Meeting Screen -->
       <div class="live-captions-container" id="live-captions-box">
-        <div class="caption-header">
-          <span class="caption-pulse"></span>
-          <span class="caption-label">Subtítulos en vivo (Voz detectada):</span>
-        </div>
-        <div class="caption-text" id="live-caption-text">Comienza a hablar por el micrófono. La llamada está extrayendo tu audio...</div>
+        <div class="caption-text" id="live-caption-text">Los subtítulos en directo aparecerán aquí...</div>
       </div>
 
       <!-- Floating Bottom Meeting Toolbar -->
@@ -338,6 +390,15 @@
           <span>Reaccionar</span>
         </button>
 
+        <!-- Toggle Video Analysis (tekit-vision) -->
+        <button class="call-ctrl-btn active" id="btn-toggle-vision" title="Activar / Desactivar análisis visual de atención">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"></path>
+          </svg>
+          <span>Visión</span>
+        </button>
+
         <!-- Red Hang up / Leave Button -->
         <button class="call-leave-btn" id="btn-leave-call" title="Colgar llamada y generar transcripción">
           <svg viewBox="0 0 24 24" fill="currentColor">
@@ -354,23 +415,15 @@
     <div class="teams-modal-backdrop hidden" id="help-modal">
       <div class="teams-modal-box">
         <div class="modal-header">
-          <h3>Microsoft Teams Replica con Transcripción Nativa</h3>
+          <h3>Microsoft Teams - Ayuda y Configuración</h3>
           <button class="modal-close-btn" id="btn-close-modal">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Esta aplicación replica la interfaz y experiencia de <strong>Microsoft Teams</strong> sin dependencias ni librerías externas pesadas:</p>
+          <p>Bienvenido al entorno de <strong>Microsoft Teams</strong>:</p>
           <ul>
-            <li><strong>Llamada integrada:</strong> Pulsa el botón morado <code>Reunirse</code> para entrar a la llamada.</li>
-            <li><strong>Extracción de audio:</strong> Captura tu audio en tiempo real usando las APIs estándar de la Web (<code>MediaDevices</code> y <code>Web Audio API</code>).</li>
-            <li><strong>Transcripción a texto desde cero:</strong> Utiliza el motor nativo del navegador (<code>SpeechRecognition</code>) para convertir todo lo que hablas a texto con timestamps.</li>
-            <li><strong>Al colgar (Leave):</strong> Automáticamente se extrae la grabación de audio, se detiene el stream y se publica en el chat la tarjeta oficial de Teams con:
-              <ul>
-                <li>Duración exacta de la llamada.</li>
-                <li>Reproductor de audio integrado para escuchar la grabación.</li>
-                <li>Transcripción completa dividida por timestamps.</li>
-                <li>Botones para copiar el texto o descargar el audio y la transcripción.</li>
-              </ul>
-            </li>
+            <li><strong>Reuniones:</strong> Haz clic en <code>Reunirse</code> para iniciar una videollamada de alta definición.</li>
+            <li><strong>Subtítulos en directo:</strong> Se transcriben automáticamente en tiempo real mientras los participantes hablan.</li>
+            <li><strong>Grabación y actas:</strong> Al finalizar la llamada, la grabación de audio y la transcripción completa se publican automáticamente en el canal.</li>
           </ul>
         </div>
         <div class="modal-footer">
@@ -381,7 +434,8 @@
 
   </div>
 
-  <script src="app.js"></script>
+  <script src="acoustic-engine.js?v=4.1"></script>
+  <script src="app.js?v=4.1"></script>
 </body>
 </html>
 
