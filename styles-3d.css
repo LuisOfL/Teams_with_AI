@@ -1,0 +1,624 @@
+/* ========================================================
+   TEKIT - PRECISION HARDWARE & ARCHITECTURAL UI LAYER
+   ======================================================== */
+:root {
+  --teams-purple: #F97316;
+  --teams-purple-hover: #EA580C;
+  --teams-purple-active: #C2410C;
+  --teams-purple-light: #FEF3C7;
+  --teams-purple-subtle: rgba(249, 115, 22, 0.16);
+}
+
+/* Architectural 1px Grid on #0B0C0E */
+.architectural-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #0B0C0E;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+#teams-3d-bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.78;
+  filter: blur(5px);
+}
+
+.teams-topbar,
+.teams-main-body {
+  position: relative;
+  z-index: 2;
+}
+
+body.theme-dark .teams-topbar {
+  background: rgba(11, 12, 14, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+body.theme-dark .teams-app-nav {
+  background: rgba(11, 12, 14, 0.92);
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+body.theme-dark .teams-chat-sidebar {
+  background: rgba(13, 14, 17, 0.88);
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+body.theme-dark .teams-chat-main {
+  background: rgba(11, 12, 14, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Clean Architectural Surfaces for Second Page (Matching Hero Style) */
+.topbar-search input,
+.chat-filter-input-wrap,
+.lang-selector-group,
+.chat-input-box {
+  background: #0F1013 !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.topbar-search input:focus,
+.chat-input-box:focus-within {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+.chat-header {
+  background: rgba(11, 12, 14, 0.78) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(10px);
+}
+
+.chat-input-area {
+  background: rgba(11, 12, 14, 0.82) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Crisp Zinc & Tekit-Orange Avatars */
+.user-avatar-circle,
+.teams-message.outgoing .message-avatar,
+.avatar-large {
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+  font-weight: 700 !important;
+}
+
+.conv-avatar,
+.chat-header-avatar,
+.message-avatar {
+  background: #18181B !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #F4F4F5 !important;
+}
+
+.vision-segment.seg-neutral {
+  background-color: #F97316 !important;
+}
+
+.conversation-item {
+  transition: background-color 0.18s ease, border-color 0.18s ease !important;
+  border: 1px solid transparent;
+  border-radius: 6px !important;
+}
+
+.conversation-item:hover {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.conversation-item.active {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.app-nav-item.active {
+  color: #FFFFFF !important;
+}
+
+.app-nav-item.active::before {
+  background: #FFFFFF !important;
+}
+
+.chat-tab-btn.active {
+  color: #FFFFFF !important;
+  border-bottom-color: #FFFFFF !important;
+}
+
+body.theme-dark .message-bubble,
+body.theme-dark .transcription-card {
+  background: rgba(15, 16, 19, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.transcription-card {
+  border-left: 2px solid #F97316 !important;
+}
+
+.teams-meet-button {
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  transition: background-color 0.18s ease, transform 0.18s ease !important;
+}
+
+.teams-meet-button:hover {
+  background: #E4E4E7 !important;
+  transform: translateY(-1px);
+}
+
+.teams-audio-call-button {
+  background: #0F1013 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 6px !important;
+  color: #E4E4E7 !important;
+}
+
+.teams-audio-call-button:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+.chat-send-btn {
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+  border-radius: 5px !important;
+}
+
+.chat-send-btn:hover {
+  background: #E4E4E7 !important;
+}
+
+/* ========================================================
+   MINIMAL ENGINEERING SPLASH SCREEN
+   ======================================================== */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0B0C0E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.splash-logo {
+  font-family: 'Syne', var(--font-family);
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
+
+.splash-sub {
+  font-family: 'Inter', var(--font-family);
+  font-size: 13px;
+  color: #71717A;
+}
+
+.splash-bar-track {
+  width: 220px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.splash-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: #FFFFFF;
+  transition: width 0.12s ease-out;
+}
+
+.splash-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #A1A1AA;
+  letter-spacing: 0.1em;
+}
+
+/* ========================================================
+   PRODUCT HERO (CLEAN ARCHITECTURAL LAYOUT + 3D HARDWARE)
+   ======================================================== */
+.teams-hero-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: #0B0C0E;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              visibility 0.55s ease;
+}
+
+.teams-hero-intro.exiting {
+  opacity: 0;
+  transform: scale(1.03);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.teams-app-container {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.teams-app-container.teams-app-hidden {
+  opacity: 0;
+  transform: scale(0.98);
+  pointer-events: none;
+}
+
+#hero-webgl-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  cursor: grab;
+}
+
+#hero-webgl-canvas:active {
+  cursor: grabbing;
+}
+
+/* Clean Top Navbar */
+.hero-navbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-brand-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: #F97316;
+  color: #0A0A0A;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  display: grid;
+  place-items: center;
+}
+
+.hero-brand-name {
+  font-family: 'Inter', var(--font-family);
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+.hero-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.hero-nav-link {
+  font-family: 'Inter', var(--font-family);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #A1A1AA;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.hero-nav-link:hover {
+  color: #FFFFFF;
+}
+
+.hero-nav-enter-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: transparent;
+  color: #FFFFFF;
+  font-family: 'Inter', var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.hero-nav-enter-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+/* Main Hero Content */
+.hero-main-grid {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 24px 48px;
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 560px;
+}
+
+.hero-title {
+  font-family: 'Inter', var(--font-family);
+  font-size: clamp(52px, 6vw, 84px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.hero-subtitle {
+  font-family: 'Inter', var(--font-family);
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #A1A1AA;
+  max-width: 480px;
+  margin-bottom: 30px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+/* Solid, Crisp Primary Button (Zero Neon Glow) */
+.btn-primary {
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: none;
+  background: #FFFFFF;
+  color: #0A0A0A;
+  font-family: 'Inter', var(--font-family);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.btn-primary:hover {
+  background: #E4E4E7;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(15, 16, 19, 0.72);
+  color: #E4E4E7;
+  font-family: 'Inter', var(--font-family);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+}
+
+.btn-ghost.active-toggle {
+  border-color: #F97316;
+  color: #F97316;
+}
+
+/* Engineering Bento Grid */
+.hero-bento-grid {
+  position: relative;
+  z-index: 6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 0 48px 32px;
+}
+
+.bento-card {
+  background: rgba(15, 16, 19, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 16px 18px;
+  backdrop-filter: blur(8px);
+}
+
+.bento-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: #71717A;
+  margin-bottom: 6px;
+}
+
+.bento-metric {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 600;
+  color: #F4F4F5;
+  margin-bottom: 6px;
+}
+
+.bento-desc {
+  font-family: 'Inter', var(--font-family);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #A1A1AA;
+}
+
+.bento-desc code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: #F97316;
+}
+
+.bento-code {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: #07080A;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #E4E4E7;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+/* Clean Minimal Transcription Card Badges (No Green/Emoji Clutter) */
+.card-duration-badge,
+.card-lang-badge {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #E4E4E7 !important;
+  font-family: 'Inter', var(--font-family);
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em;
+  padding: 4px 11px !important;
+  border-radius: 6px !important;
+}
+
+.card-duration-badge {
+  font-family: 'JetBrains Mono', monospace;
+  color: #F97316 !important;
+}
+
+/* Meeting Stage & Horizontal Teams/Meet Control Bar */
+.teams-meeting-overlay {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.meeting-control-bar {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  flex-shrink: 0;
+}
+
+.meeting-control-bar .call-ctrl-btn,
+.meeting-control-bar .call-leave-btn {
+  flex-shrink: 0;
+}
+
+.remote-user-tile {
+  background: #0B0C0E !important;
+}
+
+.meeting-3d-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.meeting-fallback-avatar {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.meeting-fallback-avatar.visible {
+  opacity: 1;
+}
+
+.meeting-3d-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #E4E4E7;
+  background: rgba(15, 16, 19, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.remote-user-tile .tile-user-info {
+  z-index: 4;
+}
+
+@media (max-width: 960px) {
+  .hero-navbar,
+  .hero-main-grid,
+  .hero-bento-grid {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .hero-nav-links {
+    gap: 14px;
+  }
+  .hero-bento-grid {
+    grid-template-columns: 1fr;
+  }
+}

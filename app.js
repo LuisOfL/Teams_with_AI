@@ -340,17 +340,8 @@
 
   function getLanguageName(code) {
     const names = {
-      'auto': 'Automático (Navegador)',
-      'es-ES': 'Español (España)',
-      'es-MX': 'Español (Latam)',
-      'en-US': 'English (US)',
-      'en-GB': 'English (UK)',
-      'fr-FR': 'Français',
-      'pt-BR': 'Português (Brasil)',
-      'de-DE': 'Deutsch',
-      'it-IT': 'Italiano',
-      'ja-JP': '日本語',
-      'zh-CN': '中文 (普通话)'
+      'es-ES': 'Español',
+      'en-US': 'English'
     };
     return names[code] || code;
   }
@@ -618,10 +609,10 @@
         </div>
         <div class="card-badges-row">
           <div class="card-duration-badge">
-            ⏱️ ${msg.duration}
+            ${msg.duration}
           </div>
           <div class="card-lang-badge">
-            🌐 ${escapeHtml(msg.language || 'Español')}
+            ${escapeHtml(msg.language || 'Español')}
           </div>
         </div>
       </div>
@@ -1622,7 +1613,7 @@
   // ========================================================
   function setupEventListeners() {
     // Tema
-    DOM.themeToggleBtn.addEventListener('click', toggleTheme);
+    if (DOM.themeToggleBtn) DOM.themeToggleBtn.addEventListener('click', toggleTheme);
 
     // Ayuda
     DOM.helpInfoBtn.addEventListener('click', () => DOM.helpModal.classList.remove('hidden'));
@@ -1668,7 +1659,7 @@
     // Botones de llamada
     DOM.startCallBtn.addEventListener('click', () => startCall({ video: true }));
     DOM.startAudioOnlyBtn.addEventListener('click', () => startCall({ video: false }));
-    DOM.quickCallInputBtn.addEventListener('click', () => startCall({ video: true }));
+    if (DOM.quickCallInputBtn) DOM.quickCallInputBtn.addEventListener('click', () => startCall({ video: true }));
 
     // Controles de llamada
     DOM.leaveCallBtn.addEventListener('click', endCall);
